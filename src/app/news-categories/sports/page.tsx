@@ -18,7 +18,7 @@ const SportsPage: React.FC = () => {
 
       <Header />
 
-      <main className="max-w-full mx-auto px-8 sm:px-12 lg:px-16 py-16">
+      <main className="w-full px-2 sm:px-4 lg:px-6 py-10 lg:py-14">
         <h1 className="text-5xl font-bold text-black mb-12">SPORTS</h1>
 
         <div className="space-y-16">
@@ -34,14 +34,14 @@ const SportsPage: React.FC = () => {
               <motion.div
                 whileHover={{ scale: 1.03 }}
                 transition={{ duration: 0.3 }}
-                className="relative w-full lg:w-[48%] aspect-[3/2] lg:aspect-auto"
+                className="relative w-full lg:w-[35%] h-[320px]" 
               >
                 <Image
                   src={article.image}
                   alt={article.title}
                   fill
                   className="object-cover transition-transform duration-300"
-                  sizes="(max-width: 1024px) 100vw, 50vw"
+                  sizes="(max-width: 767px) 100vw, (max-width: 1023px) 50vw, 42vw"
                 />
               </motion.div>
 
