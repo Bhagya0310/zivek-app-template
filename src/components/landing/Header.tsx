@@ -1,9 +1,10 @@
 'use client';
 
 import Link from 'next/link';
+import Image from 'next/image';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useState } from 'react';
-import { siteLogo, navigationLinks } from './constants';
+import { navigationLinks } from './constants';
 
 const fadeIn = {
   initial: { opacity: 0 },
@@ -21,24 +22,18 @@ function Header() {
         {...fadeIn}
       >
         <div className="max-w-7xl mx-auto flex items-center justify-between">
-          <Link href="/" className="font-bold text-xl text-gray-800">
-            {siteLogo}
+          <Link href="/" className="flex items-center" aria-label="Home">
+            <Image
+              src="https://cdn.prod.website-files.com/66eac38ea29fd1de7449fa8c/6753d2f13b12e59825fec6e6_zivek.svg"
+              alt="Zivek Logo"
+              width={140}
+              height={40}
+              priority
+            />
           </Link>
 
-          <nav className="hidden md:flex space-x-6">
-            {navigationLinks.map((link) => (
-              <Link
-                key={link.text}
-                href={link.href}
-                className="text-gray-600 hover:text-gray-800"
-              >
-                {link.text}
-              </Link>
-            ))}
-          </nav>
-
           <div className="flex items-center space-x-4">
-            <div className="relative">
+            <div className="relative hidden sm:block">
               <input
                 type="text"
                 placeholder="Search here"
@@ -59,8 +54,7 @@ function Header() {
                 />
               </svg>
             </div>
-
-            <button className="bg-black text-white py-2 px-4 rounded-md text-sm hover:bg-gray-800 focus:outline-none">
+            <button className="bg-black text-white py-2 px-4 rounded-md text-sm hover:bg-gray-800 focus:outline-none hidden sm:block">
               SUBSCRIBE
             </button>
 
@@ -88,7 +82,20 @@ function Header() {
         </div>
       </motion.header>
 
-      {/* Side Menu */}
+      <nav className="hidden md:flex bg-white border-t border-b px-6 md:px-12 lg:px-24 py-2">
+        <div className="max-w-7xl w-full flex justify-start space-x-6">
+          {navigationLinks.map((link) => (
+            <Link
+              key={link.text}
+              href={link.href}
+              className="text-gray-600 hover:text-gray-800 font-bold"
+            >
+              {link.text}
+            </Link>
+          ))}
+        </div>
+      </nav>
+
       <AnimatePresence>
         {menuOpen && (
           <motion.aside
@@ -112,7 +119,7 @@ function Header() {
                   key={link.text}
                   href={link.href}
                   onClick={() => setMenuOpen(false)}
-                  className="hover:text-blue-600"
+                  className="hover:text-blue-600 font-bold"
                 >
                   {link.text}
                 </Link>
