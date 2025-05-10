@@ -66,7 +66,7 @@ export default function CultureSection() {
               src={others[0].image}
               alt={others[0].title}
               width={400}
-              height={300}
+              height={200}
               className="rounded-md object-cover w-full"
             />
             <p className="text-sm text-gray-500">{others[0].date}</p>
@@ -76,7 +76,7 @@ export default function CultureSection() {
         </motion.div>
       </div>
 
-      <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 mt-6">
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 mt-3">
         {others.slice(1).map((article, idx) => (
           <motion.div
             key={article.id}

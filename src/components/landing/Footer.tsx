@@ -27,7 +27,7 @@ export default function Footer() {
               <Image
                 src="https://cdn.prod.website-files.com/66eac38ea29fd1de7449fa8c/675670dfec805b6bbd9f53e3_zivek-white.svg"
                 alt="ZIVEK"
-                width={150}
+                width={120}
                 height={40}
                 priority
               />

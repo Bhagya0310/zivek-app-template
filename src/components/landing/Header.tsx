@@ -2,8 +2,8 @@
 
 import Link from 'next/link';
 import Image from 'next/image';
-import { motion, AnimatePresence } from 'framer-motion';
 import { useState } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
 import { navigationLinks } from './constants';
 
 const fadeIn = {
@@ -17,27 +17,28 @@ function Header() {
 
   return (
     <>
-      <motion.header
-        className="bg-white shadow-md py-4 px-6 md:px-12 lg:px-24"
-        {...fadeIn}
-      >
-        <div className="max-w-7xl mx-auto flex items-center justify-between">
+      {/* Top Header */}
+      <motion.header className="bg-white border-b border-gray-200" {...fadeIn}>
+        <div className="w-full px-4 md:px-6 lg:px-8 py-4 flex items-center">
+          {/* Logo */}
           <Link href="/" className="flex items-center" aria-label="Home">
             <Image
               src="https://cdn.prod.website-files.com/66eac38ea29fd1de7449fa8c/6753d2f13b12e59825fec6e6_zivek.svg"
               alt="Zivek Logo"
-              width={140}
+              width={120}
               height={40}
               priority
             />
           </Link>
 
-          <div className="flex items-center space-x-4">
+          {/* Right Section */}
+          <div className="ml-auto flex items-center gap-4">
+            {/* Search */}
             <div className="relative hidden sm:block">
               <input
                 type="text"
                 placeholder="Search here"
-                className="border border-gray-300 rounded-md py-2 px-3 text-sm focus:outline-none focus:border-blue-500"
+                className="border border-gray-300 rounded-md py-2 pl-3 pr-10 text-sm focus:outline-none focus:border-blue-500"
               />
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -54,18 +55,21 @@ function Header() {
                 />
               </svg>
             </div>
-            <button className="bg-black text-white py-2 px-4 rounded-md text-sm hover:bg-gray-800 focus:outline-none hidden sm:block">
+
+            {/* Subscribe Button */}
+            <button className="bg-black text-white py-2 px-4 rounded-md text-sm hover:bg-gray-800 hidden sm:block">
               SUBSCRIBE
             </button>
 
+            {/* Hamburger */}
             <button
               onClick={() => setMenuOpen(true)}
-              className="focus:outline-none"
+              className="focus:outline-none rounded-full p-2 border-2 border-gray-600 hover:bg-gray-100"
               title="Menu"
             >
               <span className="sr-only">Open Menu</span>
               <svg
-                className="h-6 w-6 text-gray-600"
+                className="h-4 w-4 text-gray-600"
                 fill="none"
                 viewBox="0 0 24 24"
                 stroke="currentColor"
@@ -82,13 +86,14 @@ function Header() {
         </div>
       </motion.header>
 
-      <nav className="hidden md:flex bg-white border-t border-b px-6 md:px-12 lg:px-24 py-2">
-        <div className="max-w-7xl w-full flex justify-start space-x-6">
+      {/* Navbar */}
+      <nav className="bg-white border-b border-gray-200 hidden md:block">
+        <div className="w-full px-4 md:px-6 lg:px-8 py-2 flex space-x-6">
           {navigationLinks.map((link) => (
             <Link
               key={link.text}
               href={link.href}
-              className="text-gray-600 hover:text-gray-800 font-bold"
+              className="text-gray-600 hover:text-gray-900 font-medium"
             >
               {link.text}
             </Link>
@@ -96,6 +101,7 @@ function Header() {
         </div>
       </nav>
 
+      {/* Mobile Sidebar */}
       <AnimatePresence>
         {menuOpen && (
           <motion.aside
@@ -113,7 +119,7 @@ function Header() {
               &times;
             </button>
 
-            <nav className="flex flex-col items-start space-y-6 text-xl font-medium">
+            <nav className="flex flex-col items-start space-y-6 text-xl font-medium mt-12">
               {navigationLinks.map((link) => (
                 <Link
                   key={link.text}

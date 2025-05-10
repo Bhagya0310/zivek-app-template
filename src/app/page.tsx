@@ -6,6 +6,7 @@ import Footer from '@/components/landing/Footer';
 import HeroSportingEvents from '@/components/landing/HeroSportingEvents';
 import CultureSection from "@/components/landing/CultureSection";
 import SubscribeSection  from  "@/components/landing/SubscribeSection";
+import PodcastSection from '@/components/landing/PodcastSection';
 
 export default function HomePage() {
   return (
@@ -16,6 +17,7 @@ export default function HomePage() {
       <LatestArticlesSection />
       <HeroSportingEvents />
       <CultureSection />
+      <PodcastSection />
       <SubscribeSection/>
       <Footer />
 
